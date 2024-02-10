@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Table from "../components/Table.astro";
+---
+
+<Layout title="Students">
+  <div class="flex flex-col justify-center">
+    <h1 class="text-2xl font-bold mt-10">Lista de Estudiantes</h1>
+    <a
+      class="w-fit mx-auto my-3 font-bold px-4 py-2 rounded-lg text-blue-700 bg-blue-300 hover:text-white hover:bg-blue-900 transition-colors"
+      href="/create">Añadir</a
+    >
+  </div>
+  <Table />
+</Layout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const tableBody = document.getElementById("table-body");
+    window.history.replaceState({}, document.title, window.location.pathname);
+
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      const storedData = JSON.parse(localStorage.getItem(key));
+
+      tableBody.innerHTML += `
+    <tr id=${key}>
+      <td>${storedData.student_first_name}</td>
+      <td>${storedData.student_last_name}</td>
+      <td>${storedData.student_id}</td>
+      <td>${storedData.student_course}</td>
+      <td>${storedData.student_note}</td>
+      <td class="flex flex-col my-3" >
+        <a class="bg-green-400 text-green-700 rounded-lg font-bold mb-3 py-2  hover:text-white hover:bg-green-900 transition-colors" href=/edit?id=${key}>Editar</a>
+        <button class="bg-red-400 text-red-700 rounded-lg font-bold px-3 py-2 hover:text-white hover:bg-red-900 transition-colors" id="delete-button" type="button" value=${key}>Eliminar</button>
+      </td>
+    </tr>
+  `;
+    }
+  });
+</script>
+
+<script src="../scripts/delete.js"></script>

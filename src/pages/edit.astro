@@ -1,0 +1,18 @@
+---
+import Form from "../components/Form.astro";
+import Layout from "../layouts/Layout.astro";
+import ButtonSubmit from "../components/ButtonSubmit.astro";
+---
+
+<Layout title="Adding">
+  <div class="flex my-10 flex-col-reverse justify-center gap-y-6">
+    <a
+      class="bg-purple-400 w-fit mx-auto px-4 py-2 rounded-md hover:text-white hover:bg-purple-800 transition-colors font-bold"
+      href="/">Volver</a
+    >
+    <h1 class="font-bold text-3xl">¡Edita la información del Estudiante!</h1>
+  </div>
+  <Form text="Editar" />
+</Layout>
+
+<script src="../scripts/edit.js"></script>

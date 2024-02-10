@@ -1,0 +1,50 @@
+---
+const { text } = Astro.props;
+---
+
+<form class="flex flex-col w-full text-lg" action="/">
+  <label class="font-bold" for="firstname">Nombre del Estudiante</label>
+  <input
+    class="w-fit m-auto mb-5 rounded-md px-2"
+    type="text"
+    name="firstname"
+    id="firstname"
+  />
+
+  <label class="font-bold" for="lastname">Apellido del Estudiante</label>
+  <input
+    class="w-fit m-auto mb-5 rounded-md px-2"
+    type="text"
+    name="lastname"
+    id="lastname"
+  />
+
+  <label class="font-bold" for="id">Identificador (ID) del Estudiante</label>
+  <input
+    class="w-fit m-auto mb-5 rounded-md px-2"
+    type="number"
+    name="id"
+    id="id"
+  />
+
+  <label class="font-bold" for="course">Curso del Estudiante</label>
+  <input
+    class="w-fit m-auto mb-5 rounded-md px-2"
+    type="text"
+    name="course"
+    id="course"
+  />
+
+  <label class="font-bold" for="note">Nota del Estudiante</label>
+  <input
+    class="w-fit m-auto rounded-md px-2"
+    type="number"
+    name="note"
+    id="note"
+  />
+
+  <button
+    class="bg-green-300 w-fit mx-auto mt-5 px-5 py-2 rounded-md hover:bg-green-900 hover:text-white transition-colors"
+    id="btn">{text}</button
+  >
+</form>
