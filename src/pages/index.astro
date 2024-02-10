@@ -20,8 +20,9 @@ import Table from "../components/Table.astro";
 
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
+    // console.log(key);
     const storedData = JSON.parse(localStorage.getItem(key));
-    console.log(storedData);
+    // console.log(storedData);
 
     tableBody.innerHTML += `
     <tr id=${key}>
