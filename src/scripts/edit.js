@@ -10,22 +10,39 @@ document.getElementById("note").value = storedData.student_note;
 
 const button = document.getElementById("btn");
 
-button.addEventListener("click", () => {
-  localStorage.removeItem(studentId);
+button.addEventListener("click", (e) => {
+  e.preventDefault();
 
-  const dataStudents = {
-    id: generateUniqueId(),
-    student_first_name: document.getElementById("firstname").value,
-    student_last_name: document.getElementById("lastname").value,
-    student_id: document.getElementById("id").value,
-    student_course: document.getElementById("course").value,
-    student_note: document.getElementById("note").value,
-  };
+  const elementsArray = [
+    document.getElementById("firstname"),
+    document.getElementById("lastname"),
+    document.getElementById("id"),
+    document.getElementById("course"),
+    document.getElementById("note"),
+  ];
 
-  const uniqueId = generateUniqueId();
-  const JSONStudentsData = JSON.stringify(dataStudents);
+  const isEmptyField = elementsArray.some((element) => !element.value);
 
-  localStorage.setItem(uniqueId, JSONStudentsData);
+  if (isEmptyField) {
+    return alert(`¡Hay campos que no están llenos!`);
+  } else {
+    localStorage.removeItem(studentId);
+
+    const dataStudents = {
+      id: generateUniqueId(),
+      student_first_name: document.getElementById("firstname").value,
+      student_last_name: document.getElementById("lastname").value,
+      student_id: document.getElementById("id").value,
+      student_course: document.getElementById("course").value,
+      student_note: document.getElementById("note").value,
+    };
+
+    const uniqueId = generateUniqueId();
+    const JSONStudentsData = JSON.stringify(dataStudents);
+
+    localStorage.setItem(uniqueId, JSONStudentsData);
+    window.location.href = "/";
+  }
 });
 
 function generateUniqueId() {
