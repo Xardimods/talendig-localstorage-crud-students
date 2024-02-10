@@ -15,15 +15,15 @@ import Table from "../components/Table.astro";
 </Layout>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const tableBody = document.getElementById("table-body");
-    window.history.replaceState({}, document.title, window.location.pathname);
+  const tableBody = document.getElementById("table-body");
+  window.history.replaceState({}, document.title, window.location.pathname);
 
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      const storedData = JSON.parse(localStorage.getItem(key));
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const storedData = JSON.parse(localStorage.getItem(key));
+    console.log(storedData);
 
-      tableBody.innerHTML += `
+    tableBody.innerHTML += `
     <tr id=${key}>
       <td>${storedData.student_first_name}</td>
       <td>${storedData.student_last_name}</td>
@@ -36,8 +36,7 @@ import Table from "../components/Table.astro";
       </td>
     </tr>
   `;
-    }
-  });
+  }
 </script>
 
 <script src="../scripts/delete.js"></script>
